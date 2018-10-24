@@ -1,0 +1,63 @@
+﻿<Window x:Class="TetrisMVC.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Tetris Game" Height="511" Width="600"
+	KeyDown = "HandleKeyDown" 
+    Background ="DimGray">
+
+    <DockPanel LastChildFill="False" Height="528" VerticalAlignment="Top" Margin="0,-26,0,0">
+        <StackPanel DockPanel.Dock="Right" Width="270" Margin="0,18,0,0">
+            <TextBlock x:Name="NameTxt" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Hello " VerticalAlignment="Top" Foreground="Red" FontSize="16" Width="240" FontFamily="Showcard Gothic" Margin="20,10,0,0" />
+            <TextBlock x:Name="levelTxt" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Level :" VerticalAlignment="Top" Foreground="White" FontSize="16" Width="157" FontFamily="Showcard Gothic" Margin="20,0,0,20"/>
+            <Label x:Name="nextTxt" Content="  Next Shape" Margin="70,0,70,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontWeight="Bold" FontFamily="Showcard Gothic" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="130"/>
+            <Canvas x:Name="nextShapeCanvas" HorizontalAlignment="Center" Height="75" VerticalAlignment="Top" Width="100"/>
+            <TextBlock x:Name="scoreTxt" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="260" FontSize="24" FontFamily="Showcard Gothic" TextAlignment="Center" Text="Your Score : 0" Foreground="#FF77FF61" Margin="0,0,10,0"/>
+            <Label x:Name="txtfinish" Content=" Game over" Height="52" Background="{x:Null}" FontWeight="Bold" Margin="26,10,30,0" Foreground="#FFF00000" FontSize="36" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Width="214">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="0.865"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.984"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Button x:Name="startStopBtn" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="112"  Click="startStopBtn_Click" Height="48" Margin="88,20,70,0" FontSize="24" />
+            <Button x:Name="restartStopBtn" Content="Restart" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="112"  Click="restartStopBtn_Click" Height="48" Margin="88,20,70,0" FontSize="24" />
+            <Button x:Name="startMenu" Content="Menu" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="112"  Click="startMenu_Click" Height="48" Margin="88,20,70,0" FontSize="24" />
+
+        </StackPanel>
+        <Grid Name="MainGrid" Height="480" Width="300" Background="SkyBlue" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30" ToolTip=""/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30" ToolTip=""/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </DockPanel>
+</Window>
