@@ -91,10 +91,7 @@ namespace TetrisMVC.Controller
             }
         }
 
-        public int getValueScore()
-        {
-            return handlePlaying.GameScore;
-        }
+        
 
         public void saveScore(MainWindow mainWindow)
         {
@@ -104,7 +101,7 @@ namespace TetrisMVC.Controller
             {
                 UserServiceSoapClient reader = new UserServiceSoapClient();
                 int userScore = reader.getScore(mainWindow.id);
-                int currentScore = getValueScore();
+                int currentScore = handlePlaying.getValueScore();
                 if (currentScore > userScore)
                     reader.updateScore(mainWindow.id, currentScore);
             }

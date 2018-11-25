@@ -68,6 +68,11 @@ namespace TetrisMVC.BusinessLayer
             tetraminoMoving = tM;
         }
 
+        public int getValueScore()
+        {
+            return GameScore;
+        }
+
         public void setLevel(int level)
         {
             for (int i = 0; i < 12; i++)
