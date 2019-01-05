@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using TetrisMVC.BusinessLayer;
 using TetrisMVC.DTO;
+using TetrisMVC.DTO.Tetramino;
 using TetrisMVC.TetrisService;
 
 namespace TetrisMVC.Controller
@@ -42,7 +43,7 @@ namespace TetrisMVC.Controller
             MainWindow = mw;
 
             Tetramino = new Tetramino();
-            te_moving = new TetraminoMoving(Tetramino);
+            te_moving = new TetraminoMoving();
             handlePlaying = new HandlePlaying(this, te_moving);
             
             

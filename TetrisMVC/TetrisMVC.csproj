@@ -71,6 +71,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataTetrisDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DTO\Tetramino\I_Tetromino.cs" />
+    <Compile Include="DTO\Tetramino\J_Tetromino.cs" />
+    <Compile Include="DTO\Tetramino\L_Tetromino.cs" />
+    <Compile Include="DTO\Tetramino\O_Tetromino.cs" />
+    <Compile Include="DTO\Tetramino\S_Tetromino.cs" />
+    <Compile Include="DTO\Tetramino\T_Tetromino.cs" />
+    <Compile Include="DTO\Tetramino\Z_Tetromino.cs" />
     <Compile Include="View\highScore.xaml.cs">
       <DependentUpon>highScore.xaml</DependentUpon>
     </Compile>
@@ -98,8 +105,8 @@
     <Compile Include="BusinessLayer\HandlePlaying.cs" />
     <Compile Include="BusinessLayer\TetraminoMoving.cs" />
     <Compile Include="Controller\MainMenuController.cs" />
-    <Compile Include="DTO\Board.cs" />
-    <Compile Include="DTO\Tetramino.cs" />
+    <Compile Include="DTO\Board\Board.cs" />
+    <Compile Include="DTO\Tetramino\Tetramino.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

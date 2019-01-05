@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
-namespace TetrisMVC.DTO
+namespace TetrisMVC.DTO.Tetramino
 {
     public class Tetramino
     {
         #region ATTRIBUTE
+
+        protected static Color TetrominoColor;
+        protected static string TetrominoName;
 
         private static Color O_TetrominoColor = Colors.GreenYellow;
         private static Color I_TetrominoColor = Colors.Red;
@@ -150,6 +153,13 @@ namespace TetrisMVC.DTO
         {
             return (int[,])GetType().GetField(variable).GetValue(this);
         }
+
+        //public abstract string[] getArrayTetrominosT();
+
+        //public abstract Color[] getShapecolorT();
+
+        //public abstract int[,] getVariableByStringT();
+        
 
         #endregion
     }

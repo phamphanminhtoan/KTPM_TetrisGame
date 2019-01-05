@@ -104,7 +104,7 @@ namespace TetrisMVC.BusinessLayer
                 rotation -= 90;
                 return;
             }
-            te_moving.shapeRotation(ref rotation, CurrentShapeNumber, ref currentTetromino);
+            te_moving.shapeRotation(ref rotation, CurrentShapeNumber, ref currentTetromino, mainWindowController.Tetramino);
             IsRotated = true;
             addShape(CurrentShapeNumber, LeftPos, DownPos);
         }
