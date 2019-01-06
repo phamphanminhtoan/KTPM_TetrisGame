@@ -10,6 +10,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using TetrisMVC.Controller;
 using TetrisMVC.DTO;
+using TetrisMVC.DTO.Tetramino;
 using TetrisMVC.TetrisService;
 
 namespace TetrisMVC.BusinessLayer
@@ -20,6 +21,8 @@ namespace TetrisMVC.BusinessLayer
         private MainWindowController mainWindowController;
 
         private TetraminoMoving tetraminoMoving;
+        public Tetramino Tetramino { get; set; }
+
 
         public int rotation = 0;
         private int rowCount = 0;
@@ -58,14 +61,15 @@ namespace TetrisMVC.BusinessLayer
         #endregion
 
         #region METHOD
-        public HandlePlaying(MainWindowController mWC, TetraminoMoving tM)
+        public HandlePlaying(MainWindowController mWC)
         {
             mainWindowController = mWC;
             GameSpeed = GAMESPEED;
             shapeRandom = new Random();
             CurrentShapeNumber = shapeRandom.Next(1, 8);
             nextShapeNumber = shapeRandom.Next(1, 8);
-            tetraminoMoving = tM;
+            tetraminoMoving = new TetraminoMoving();
+            Tetramino = new Tetramino();
         }
 
         public int getValueScore()
@@ -97,14 +101,14 @@ namespace TetrisMVC.BusinessLayer
         }
 
         // Hàm xoay khối
-        public void shapeRotationChecker(ref int rotation, TetraminoMoving te_moving)
+        public void shapeRotationChecker(ref int rotation)
         {
             if (rotationCollided(rotation))
             {
                 rotation -= 90;
                 return;
             }
-            te_moving.shapeRotation(ref rotation, CurrentShapeNumber, ref currentTetromino, mainWindowController.Tetramino);
+            tetraminoMoving.shapeRotation(ref rotation, CurrentShapeNumber, ref currentTetromino, Tetramino);
             IsRotated = true;
             addShape(CurrentShapeNumber, LeftPos, DownPos);
         }
@@ -112,7 +116,7 @@ namespace TetrisMVC.BusinessLayer
         public void Timer_Tick(object sender, EventArgs e)
         {
             DownPos++;
-            int result = moveShape(Timer, mainWindowController.Board);
+            int result = moveShape(Timer, mainWindowController.MainWindow.myBoard);
             if (result == -1)
                 gameOver();
             if (result == 0)
@@ -214,7 +218,7 @@ namespace TetrisMVC.BusinessLayer
                 squareColumn = currentTetrominoColumn[i];
                 try
                 {
-                    movingSquare = (Rectangle)mainWindowController.Board.getMainGrid().Children
+                    movingSquare = (Rectangle)mainWindowController.MainWindow.myBoard.getMainGrid().Children
                     .Cast<UIElement>()
                     .FirstOrDefault(e => Grid.GetRow(e) == squareRow + _bottomOffset && Grid.GetColumn(e) == squareColumn + _leftRightOffset);
                     if (movingSquare != null)
@@ -227,7 +231,7 @@ namespace TetrisMVC.BusinessLayer
                 }
                 catch { }
             }
-            if (DownPos > (mainWindowController.Board.getTetrisGridRow() - currentTetrominoHeigth)) { return true; }
+            if (DownPos > (mainWindowController.MainWindow.myBoard.getTetrisGridRow() - currentTetrominoHeigth)) { return true; }
             return false;
         }
 
@@ -248,8 +252,8 @@ namespace TetrisMVC.BusinessLayer
         // Hàm kiểm tra full dòng
         private void checkComplete()
         {
-            int gridRow = mainWindowController.Board.getMainGrid().RowDefinitions.Count;
-            int gridColumn = mainWindowController.Board.getMainGrid().ColumnDefinitions.Count;
+            int gridRow = mainWindowController.MainWindow.myBoard.getMainGrid().RowDefinitions.Count;
+            int gridColumn = mainWindowController.MainWindow.myBoard.getMainGrid().ColumnDefinitions.Count;
             int squareCount = 0;
             for (int row = gridRow; row >= 0; row--)
             {
@@ -257,7 +261,7 @@ namespace TetrisMVC.BusinessLayer
                 for (int column = gridColumn; column >= 0; column--)
                 {
                     Rectangle square;
-                    square = (Rectangle)mainWindowController.Board.getMainGrid().Children
+                    square = (Rectangle)mainWindowController.MainWindow.myBoard.getMainGrid().Children
                    .Cast<UIElement>()
                    .FirstOrDefault(e => Grid.GetRow(e) == row && Grid.GetColumn(e) == column);
                     if (square != null)
@@ -273,7 +277,7 @@ namespace TetrisMVC.BusinessLayer
                 if (squareCount == gridColumn)
                 {
                     deleteLine(row);
-                    mainWindowController.Board.getScoreTxt().Text = "Your Score: " + getScore().ToString();
+                    mainWindowController.MainWindow.myBoard.getScoreTxt().Text = "Your Score: " + getScore().ToString();
                     checkComplete();
                 }
             }
@@ -288,19 +292,19 @@ namespace TetrisMVC.BusinessLayer
         // Hàm xoá dòng đã hoàn thành trên grid
         private void deleteLine(int row)
         {
-            for (int i = 0; i < mainWindowController.Board.getMainGrid().ColumnDefinitions.Count; i++)
+            for (int i = 0; i < mainWindowController.MainWindow.myBoard.getMainGrid().ColumnDefinitions.Count; i++)
             {
                 Rectangle square;
                 try
                 {
-                    square = (Rectangle)mainWindowController.Board.getMainGrid().Children
+                    square = (Rectangle)mainWindowController.MainWindow.myBoard.getMainGrid().Children
                    .Cast<UIElement>()
                    .FirstOrDefault(e => Grid.GetRow(e) == row && Grid.GetColumn(e) == i);
-                    mainWindowController.Board.getMainGrid().Children.Remove(square);
+                    mainWindowController.MainWindow.myBoard.getMainGrid().Children.Remove(square);
                 }
                 catch { }
             }
-            foreach (UIElement element in mainWindowController.Board.getMainGrid().Children)
+            foreach (UIElement element in mainWindowController.MainWindow.myBoard.getMainGrid().Children)
             {
                 Rectangle square = (Rectangle)element;
                 if (square.Name.IndexOf("arrived") == 0 && Grid.GetRow(square) <= row)
@@ -316,15 +320,15 @@ namespace TetrisMVC.BusinessLayer
 
             //error board null
             int index = 0;
-            while (index < mainWindowController.Board.getMainGrid().Children.Count)
+            while (index < mainWindowController.MainWindow.myBoard.getMainGrid().Children.Count)
             {
-                UIElement element = mainWindowController.Board.getMainGrid().Children[index];
+                UIElement element = mainWindowController.MainWindow.myBoard.getMainGrid().Children[index];
                 if (element is Rectangle)
                 {
                     Rectangle square = (Rectangle)element;
                     if (square.Name.IndexOf("moving_") == 0)
                     {
-                        mainWindowController.Board.getMainGrid().Children.Remove(element);
+                        mainWindowController.MainWindow.myBoard.getMainGrid().Children.Remove(element);
                         index = -1;
                     }
                 }
@@ -343,17 +347,17 @@ namespace TetrisMVC.BusinessLayer
             if (!IsRotated)
             {
                 currentTetromino = null;
-                currentTetromino = mainWindowController.Tetramino.getVariableByString(mainWindowController.Tetramino.getArrayTetrominos()[shapeNumber].ToString());
+                currentTetromino = Tetramino.getVariableByString(Tetramino.getArrayTetrominos()[shapeNumber].ToString());
             }
             int firstDim = currentTetromino.GetLength(0);
             int secondDim = currentTetromino.GetLength(1);
             currentTetrominoWidth = secondDim;
             currentTetrominoHeigth = firstDim;
-            if (currentTetromino == mainWindowController.Tetramino.I_Tetromino_90)
+            if (currentTetromino == Tetramino.I_Tetromino_90)
             {
                 currentTetrominoWidth = 1;
             }
-            else if (currentTetromino == mainWindowController.Tetramino.I_Tetromino_0) { currentTetrominoHeigth = 1; }
+            else if (currentTetromino == Tetramino.I_Tetromino_0) { currentTetrominoHeigth = 1; }
             for (int row = 0; row < firstDim; row++)
             {
                 for (int column = 0; column < secondDim; column++)
@@ -361,12 +365,12 @@ namespace TetrisMVC.BusinessLayer
                     int bit = currentTetromino[row, column];
                     if (bit == 1)
                     {
-                        square = mainWindowController.Tetramino.getBasicSquare(handleColor(mainWindowController.Board.getColor(), shapeNumber));
-                        mainWindowController.Board.getMainGrid().Children.Add(square);
+                        square = Tetramino.getBasicSquare(handleColor(mainWindowController.MainWindow.myBoard.getColor(), shapeNumber));
+                        mainWindowController.MainWindow.myBoard.getMainGrid().Children.Add(square);
                         square.Name = "moving_" + Grid.GetRow(square) + "_" + Grid.GetColumn(square);
-                        if (_down >= mainWindowController.Board.getMainGrid().RowDefinitions.Count - currentTetrominoHeigth)
+                        if (_down >= mainWindowController.MainWindow.myBoard.getMainGrid().RowDefinitions.Count - currentTetrominoHeigth)
                         {
-                            _down = mainWindowController.Board.getMainGrid().RowDefinitions.Count - currentTetrominoHeigth;
+                            _down = mainWindowController.MainWindow.myBoard.getMainGrid().RowDefinitions.Count - currentTetrominoHeigth;
                         }
                         Grid.SetRow(square, rowCount + _down);
                         Grid.SetColumn(square, columnCount + _left);
@@ -403,16 +407,16 @@ namespace TetrisMVC.BusinessLayer
                 return Colors.Cyan;
             if (color == 7)
                 return Colors.LightSeaGreen;
-            return mainWindowController.Tetramino.getShapecolor()[shapeNumber - 1];
+            return Tetramino.getShapecolor()[shapeNumber - 1];
 
         }
 
         // Hàm tạo một khối tiếp theo
         private void drawNextShape(int shapeNumber)
         {
-            mainWindowController.Board.getNextShapeCanvas().Children.Clear();
+            mainWindowController.MainWindow.myBoard.getNextShapeCanvas().Children.Clear();
             int[,] nextShapeTetromino = null;
-            nextShapeTetromino = mainWindowController.Tetramino.getVariableByString(mainWindowController.Tetramino.getArrayTetrominos()[shapeNumber]);
+            nextShapeTetromino = Tetramino.getVariableByString(Tetramino.getArrayTetrominos()[shapeNumber]);
             int firstDim = nextShapeTetromino.GetLength(0);
             int secondDim = nextShapeTetromino.GetLength(1);
             int x = 0;
@@ -425,8 +429,8 @@ namespace TetrisMVC.BusinessLayer
                     int bit = nextShapeTetromino[row, column];
                     if (bit == 1)
                     {
-                        square = mainWindowController.Tetramino.getBasicSquare(handleColor(mainWindowController.Board.getColor(), shapeNumber));
-                        mainWindowController.Board.getNextShapeCanvas().Children.Add(square);
+                        square = Tetramino.getBasicSquare(handleColor(mainWindowController.MainWindow.myBoard.getColor(), shapeNumber));
+                        mainWindowController.MainWindow.myBoard.getNextShapeCanvas().Children.Add(square);
                         Canvas.SetLeft(square, x);
                         Canvas.SetTop(square, y);
                     }

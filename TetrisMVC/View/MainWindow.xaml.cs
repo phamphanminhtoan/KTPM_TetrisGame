@@ -28,7 +28,7 @@ namespace TetrisMVC
 
         #region ATTRIBUTE
 
-        Board myBoard;
+        public Board myBoard;
         MainWindowController mainWindowController;
         public int id;
         public string fullname;
@@ -43,7 +43,7 @@ namespace TetrisMVC
             this.fullname = fullname;
             NameTxt.Text = "Hello : " + fullname;
             myBoard = new Board(MainGrid, nextShapeCanvas, scoreTxt, color);
-            mainWindowController = new MainWindowController(myBoard, this, level);
+            mainWindowController = new MainWindowController(this, level);
         }
 
         private void HandleKeyDown(object sender, KeyEventArgs e)

@@ -19,12 +19,10 @@ namespace TetrisMVC.Controller
     public class MainWindowController
     {
         #region ATTRIBUTE
-        TetraminoMoving te_moving;
+ 
         HandlePlaying handlePlaying;
 
-        public Board Board { get; set; }
-        public Tetramino Tetramino { get; set; }
-
+        
         public MainWindow MainWindow { get; set; }
         #endregion
 
@@ -37,14 +35,11 @@ namespace TetrisMVC.Controller
             };
         }
 
-        public MainWindowController(Board BOARD, MainWindow mw, int level)
+        public MainWindowController(MainWindow mw, int level)
         {
-            Board = BOARD;
+            
             MainWindow = mw;
-
-            Tetramino = new Tetramino();
-            te_moving = new TetraminoMoving();
-            handlePlaying = new HandlePlaying(this, te_moving);
+            handlePlaying = new HandlePlaying(this);
             
             
             
@@ -67,7 +62,7 @@ namespace TetrisMVC.Controller
                 case "Up":
                     handlePlaying.rotation += 90;
                     if (handlePlaying.rotation > 270) { handlePlaying.rotation = 0; }
-                    handlePlaying.shapeRotationChecker(ref handlePlaying.rotation, te_moving);
+                    handlePlaying.shapeRotationChecker(ref handlePlaying.rotation);
                     break;
                 case "Down":
                     handlePlaying.DownPos++;
@@ -82,7 +77,7 @@ namespace TetrisMVC.Controller
                     break;
             }
 
-            int result = handlePlaying.moveShape(handlePlaying.Timer, Board);
+            int result = handlePlaying.moveShape(handlePlaying.Timer, MainWindow.myBoard);
             if (result == -1)
                 handlePlaying.gameOver();
             if (result == 0)
@@ -184,7 +179,7 @@ namespace TetrisMVC.Controller
         public void reStart()
         {
             handlePlaying.GameScore = 0;
-            Board.getScoreTxt().Text = "Your Score : 0";
+            MainWindow.myBoard.getScoreTxt().Text = "Your Score : 0";
         }
         
         #endregion
