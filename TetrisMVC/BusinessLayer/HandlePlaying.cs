@@ -58,6 +58,8 @@ namespace TetrisMVC.BusinessLayer
         public int LeftPos { get; set; } = 0;
         public bool IsRotated { get; set; } = false;
         public int CurrentShapeNumber { get; set; }
+
+        Dictionary<int, test> dicTetramino = null;
         #endregion
 
         #region METHOD
@@ -70,6 +72,20 @@ namespace TetrisMVC.BusinessLayer
             nextShapeNumber = shapeRandom.Next(1, 8);
             tetraminoMoving = new TetraminoMoving();
             Tetramino = new Tetramino();
+            dicTetramino = new Dictionary<int, test>(); 
+
+            InitDictionaryTetramino();
+        }
+
+        private void InitDictionaryTetramino()
+        {
+            dicTetramino.Add(1, new O_Tetromino());
+            dicTetramino.Add(2, new I_Tetromino());
+            dicTetramino.Add(3, new T_Tetromino());
+            dicTetramino.Add(4, new S_Tetromino());
+            dicTetramino.Add(5, new Z_Tetromino());
+            dicTetramino.Add(6, new L_Tetromino());
+            dicTetramino.Add(7, new J_Tetromino());
         }
 
         public int getValueScore()
@@ -348,16 +364,18 @@ namespace TetrisMVC.BusinessLayer
             {
                 currentTetromino = null;
                 currentTetromino = Tetramino.getVariableByString(Tetramino.getArrayTetrominos()[shapeNumber].ToString());
+                test teType = dicTetramino[shapeNumber];
+                int[,] a = teType.getVariableByString(teType.getArrayTetrominos().ToString(), teType);
             }
             int firstDim = currentTetromino.GetLength(0);
             int secondDim = currentTetromino.GetLength(1);
             currentTetrominoWidth = secondDim;
             currentTetrominoHeigth = firstDim;
-            if (currentTetromino == Tetramino.I_Tetromino_90)
-            {
-                currentTetrominoWidth = 1;
-            }
-            else if (currentTetromino == Tetramino.I_Tetromino_0) { currentTetrominoHeigth = 1; }
+            //if (currentTetromino == Tetramino.I_Tetromino_90)
+            //{
+            //    currentTetrominoWidth = 1;
+            //}
+            //else if (currentTetromino == Tetramino.I_Tetromino_0) { currentTetrominoHeigth = 1; }
             for (int row = 0; row < firstDim; row++)
             {
                 for (int column = 0; column < secondDim; column++)

@@ -7,44 +7,36 @@ using System.Windows.Media;
 
 namespace TetrisMVC.DTO.Tetramino
 {
-    class T_Tetromino : Tetramino
+    class T_Tetromino : test
     {
         //---- Khối chữ T và các góc quay------------
-        public int[,] T_Tetromino_0T = new int[2, 3] {{0,1,0},
+        public int[,] T_Tetromino_0 = new int[2, 3] {{0,1,0},
                                                      {1,1,1}};
 
-        public int[,] T_Tetromino_90T = new int[3, 2] {{1,0},
+        public int[,] T_Tetromino_90 = new int[3, 2] {{1,0},
                                                       {1,1},
                                                       {1,0}};
 
-        public int[,] T_Tetromino_180T = new int[2, 3] {{1,1,1},
+        public int[,] T_Tetromino_180 = new int[2, 3] {{1,1,1},
                                                        {0,1,0}};
 
-        public int[,] T_Tetromino_270T = new int[3, 2] {{0,1},
+        public int[,] T_Tetromino_270 = new int[3, 2] {{0,1},
                                                        {1,1},
                                                        {0,1}};
-        //public T_Tetromino()
-        //{
-        //    TetrominoColor = Colors.Gold;
-        //    TetrominoName = "T_Tetromino_0";
-        //}
+        public T_Tetromino()
+        {
+            TetrominoColor = Colors.Gold;
+            TetrominoName = "T_Tetromino_0";
+        }
 
-        //public override string[] getArrayTetrominosT()
-        //{
-        //    return null;
-        //}
+        public override string getArrayTetrominos()
+        {
+            return TetrominoName;
+        }
 
-        //public override Color[] getShapecolorT()
-        //{
-
-
-        //    return null;
-        //}
-
-        //public override int[,] getVariableByStringT()
-        //{
-
-        //    return null;
-        //}
+        public override Color getShapecolor()
+        {
+            return TetrominoColor;
+        }
     }
 }

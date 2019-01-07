@@ -76,6 +76,7 @@
     <Compile Include="DTO\Tetramino\L_Tetromino.cs" />
     <Compile Include="DTO\Tetramino\O_Tetromino.cs" />
     <Compile Include="DTO\Tetramino\S_Tetromino.cs" />
+    <Compile Include="DTO\Tetramino\test.cs" />
     <Compile Include="DTO\Tetramino\T_Tetromino.cs" />
     <Compile Include="DTO\Tetramino\Z_Tetromino.cs" />
     <Compile Include="View\highScore.xaml.cs">
@@ -142,6 +143,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Connected Services\TetrisService\TetrisMVC.TetrisService.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

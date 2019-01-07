@@ -41,13 +41,12 @@ namespace TetrisMVC.DTO.Tetramino
                                                     { 1, 1 }};
 
         //---- Khối chữ I và các góc quay------------
-        public int[,] I_Tetromino_0 = new int[2, 4] { { 1, 1, 1, 1 },
-                                                      { 0, 0, 0, 0 } };
+        public int[,] I_Tetromino_0 = new int[1, 4] { { 1, 1, 1, 1 }};
 
-        public int[,] I_Tetromino_90 = new int[4, 2]  {{ 1,0 },
-                                                       { 1,0 },
-                                                       { 1,0 },
-                                                       { 1,0 }};
+        public int[,] I_Tetromino_90 = new int[4, 1]  {{ 1 },
+                                                       { 1 },
+                                                       { 1 },
+                                                       { 1 }};
         //---- Khối chữ T và các góc quay------------
         public int[,] T_Tetromino_0 = new int[2, 3] {{0,1,0},
                                                      {1,1,1}};
@@ -154,13 +153,11 @@ namespace TetrisMVC.DTO.Tetramino
             return (int[,])GetType().GetField(variable).GetValue(this);
         }
 
-        //public abstract string[] getArrayTetrominosT();
+        //public abstract string getArrayTetrominosT();
 
-        //public abstract Color[] getShapecolorT();
+        //public abstract Color getShapecolorT();
 
-        //public abstract int[,] getVariableByStringT();
         
-
         #endregion
     }
 }

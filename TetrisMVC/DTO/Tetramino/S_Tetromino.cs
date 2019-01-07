@@ -7,13 +7,13 @@ using System.Windows.Media;
 
 namespace TetrisMVC.DTO.Tetramino
 {
-    class S_Tetromino : Tetramino
+    class S_Tetromino : test
     {
         //---- Khối chữ S và các góc quay------------
-        public int[,] S_Tetromino_0T = new int[2, 3] {{0,1,1},
+        public int[,] S_Tetromino_0 = new int[2, 3] {{0,1,1},
                                                      {1,1,0}};
 
-        public int[,] S_Tetromino_90T = new int[3, 2] {{1,0},
+        public int[,] S_Tetromino_90 = new int[3, 2] {{1,0},
                                                       {1,1},
                                                       {0,1}};
         public S_Tetromino()
@@ -22,22 +22,14 @@ namespace TetrisMVC.DTO.Tetramino
             TetrominoName = "S_Tetromino_0";
         }
 
-        //public override string[] getArrayTetrominosT()
-        //{
-        //    return null;
-        //}
+        public override string getArrayTetrominos()
+        {
+            return TetrominoName;
+        }
 
-        //public override Color[] getShapecolorT()
-        //{
-
-
-        //    return null;
-        //}
-
-        //public override int[,] getVariableByStringT()
-        //{
-
-        //    return null;
-        //}
+        public override Color getShapecolor()
+        {
+            return TetrominoColor;
+        }
     }
 }

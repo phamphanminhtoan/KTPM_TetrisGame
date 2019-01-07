@@ -7,38 +7,30 @@ using System.Windows.Media;
 
 namespace TetrisMVC.DTO.Tetramino
 {
-    class I_Tetromino : Tetramino
+    class I_Tetromino : test
     {
         //---- Khối chữ I và các góc quay------------
-        public int[,] I_Tetromino_0T = new int[2, 4] { { 1, 1, 1, 1 },
+        public int[,] I_Tetromino_0 = new int[2, 4] { { 1, 1, 1, 1 },
                                                       { 0, 0, 0, 0 } };
 
-        public int[,] I_Tetromino_90T = new int[4, 2]  {{ 1,0 },
+        public int[,] I_Tetromino_90 = new int[4, 2]  {{ 1,0 },
                                                        { 1,0 },
                                                        { 1,0 },
                                                        { 1,0 }};
         public I_Tetromino()
         {
-            TetrominoColor = Colors.GreenYellow;
+            TetrominoColor = Colors.Red;
             TetrominoName = "I_Tetromino_0";
         }
 
-        //public override string[] getArrayTetrominosT()
-        //{
-        //    return null;
-        //}
+        public override string getArrayTetrominos()
+        {
+            return TetrominoName;
+        }
 
-        //public override Color[] getShapecolorT()
-        //{
-
-
-        //    return null;
-        //}
-
-        //public override int[,] getVariableByStringT()
-        //{
-
-        //    return null;
-        //}
+        public override Color getShapecolor()
+        {
+            return TetrominoColor;
+        }
     }
 }
