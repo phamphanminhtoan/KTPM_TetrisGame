@@ -1,2 +1,230 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TetrisMVC.App" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DataTetrisDataSet" Collapsed="true">
+    <Position X="20.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAwAAAAJABAAAQAAAAAgCQBgAAAAAAAEARBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.highScore" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAAAACAgA=</HashCode>
+      <FileName>View\highScore.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisMVC.MenuWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgEAAIAAAAAAAAAgAAAAACAIDAgA=</HashCode>
+      <FileName>View\MainMenu.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisMVC.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAABAAAQAAAAAgAAAAAAAAAAAAAAAAMAAAAACAiA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisMVC.signIn" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAACAAAAAABAAAAAAAgAAACAgA=</HashCode>
+      <FileName>View\signIn.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisMVC.signUp" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAIBAAAAAAAAAACAAAA=</HashCode>
+      <FileName>View\signUp.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisMVC.BusinessLayer.HandlePlaying" Collapsed="true">
+    <Position X="22.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAABWBQhSIAGhBLAAaCAAAAAIEAQwISCBIoAAFCVEKA=</HashCode>
+      <FileName>BusinessLayer\HandlePlaying.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.BusinessLayer.TetraminoMoving" Collapsed="true">
+    <Position X="22.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAABAAAAA=</HashCode>
+      <FileName>BusinessLayer\TetraminoMoving.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.TetrisService.User" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\TetrisService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisMVC.TetrisService.UserServiceSoapClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIgQgAAAAAAAAIACAAQAAABAQCAAACAAAJAMAA=</HashCode>
+      <FileName>Connected Services\TetrisService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TetrisMVC.Controller.HighScoreController" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABAAAA=</HashCode>
+      <FileName>Controller\HighScoreController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.Controller.MainMenuController" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Controller\MainMenuController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.Controller.MainWindowController" Collapsed="true">
+    <Position X="22.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAABAAAAAACBAAACAEAAAAAAAAAAAAACEAAAgAAAA=</HashCode>
+      <FileName>Controller\MainWindowController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.Controller.signInController" Collapsed="true">
+    <Position X="22.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controller\signInController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.Controller.signUpController" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Controller\signUpController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DataTetrisDataSetTableAdapters.ThanhVienTableAdapter" Collapsed="true">
+    <Position X="24" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DataTetrisDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="18.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBBAAAMQAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Board" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAgAAAAAAAAAEAAAIQAAAEAAAAAAAhAAADAA=</HashCode>
+      <FileName>DTO\Board\Board.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.I_Tetromino" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAIAgAAAAAAAAAAAAAAAACBAAAAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\I_Tetromino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.J_Tetromino" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAIAAAAAAAAQCAEAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\J_Tetromino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.L_Tetromino" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQAAAAEAAAAAAIAAAAAAAAAAAAAAAAAAQAAAAAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\L_Tetromino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.O_Tetromino" Collapsed="true">
+    <Position X="1" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\O_Tetromino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.S_Tetromino" Collapsed="true">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAChAAAAAAAAAAAAAAAAACAAAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\S_Tetromino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.T_Tetromino" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgQAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\T_Tetromino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.Tetramino" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAgAAAAAAAAYAAEAAAAAAAAAAAAACAAAAAgAJAAAA=</HashCode>
+      <FileName>DTO\Tetramino\Tetramino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.Tetramino_BK" Collapsed="true">
+    <Position X="20.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>g8QIgQEBAQABAYAi1ABAAgTCBEIAQAAASBCggAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\Tetramino_BK.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.DTO.Tetramino.Z_Tetromino" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAIAAAAAAAABABAIAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>DTO\Tetramino\Z_Tetromino.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.Properties.Resources" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisMVC.Properties.Settings" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAQIAAgAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TetrisMVC.TetrisService.UserServiceSoap" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAIgQgAAAAAAAAIACAAQAAABAQCAAACAAAJAMAA=</HashCode>
+      <FileName>Connected Services\TetrisService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="TetrisMVC.TetrisService.UserServiceSoapChannel" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\TetrisService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
