@@ -23,39 +23,14 @@ namespace TetrisMVC.BusinessLayer
 
 
         // Hàm xoay khối 
-        public void shapeRotation(ref int _rotation, int currentShapeNumber, ref int[,] currentTetromino, Tetramino nowTe)
+        public void shapeRotation(ref int _rotation, ref int[,] currentTetromino,  Tetramino teBlock) 
         {
-            if (nowTe.getArrayTetrominos()[currentShapeNumber].IndexOf("I_") == 0)
-            {
-                if (_rotation > 90) { _rotation = 0; }
-                currentTetromino = nowTe.getVariableByString("I_Tetromino_" + _rotation);
-            }
-            else if (nowTe.getArrayTetrominos()[currentShapeNumber].IndexOf("T_") == 0)
-            {
-                currentTetromino = nowTe.getVariableByString("T_Tetromino_" + _rotation);
-            }
-            else if (nowTe.getArrayTetrominos()[currentShapeNumber].IndexOf("S_") == 0)
-            {
-                if (_rotation > 90) { _rotation = 0; }
-                currentTetromino = nowTe.getVariableByString("S_Tetromino_" + _rotation);
-            }
-            else if (nowTe.getArrayTetrominos()[currentShapeNumber].IndexOf("Z_") == 0)
-            {
-                if (_rotation > 90) { _rotation = 0; }
-                currentTetromino = nowTe.getVariableByString("Z_Tetromino_" + _rotation);
-            }
-            else if (nowTe.getArrayTetrominos()[currentShapeNumber].IndexOf("J_") == 0)
-            {
-                currentTetromino = nowTe.getVariableByString("J_Tetromino_" + _rotation);
-            }
-            else if (nowTe.getArrayTetrominos()[currentShapeNumber].IndexOf("L_") == 0)
-            {
-                currentTetromino = nowTe.getVariableByString("L_Tetromino_" + _rotation);
-            }
-            else if (nowTe.getArrayTetrominos()[currentShapeNumber].IndexOf("O_") == 0) // Do not rotate this
+            
+            if (teBlock.TetrominoName.Substring(0, 1) == "O")
             {
                 return;
             }
+            currentTetromino = teBlock.getVariableByString(teBlock.TetrominoName.Substring(0, 12) + _rotation);
 
         }
 

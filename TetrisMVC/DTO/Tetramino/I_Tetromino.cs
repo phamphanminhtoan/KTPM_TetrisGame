@@ -7,16 +7,20 @@ using System.Windows.Media;
 
 namespace TetrisMVC.DTO.Tetramino
 {
-    class I_Tetromino : test
+    class I_Tetromino : Tetramino
     {
         //---- Khối chữ I và các góc quay------------
-        public int[,] I_Tetromino_0 = new int[2, 4] { { 1, 1, 1, 1 },
-                                                      { 0, 0, 0, 0 } };
+        public int[,] I_Tetromino_0 = new int[1, 4] { { 1, 1, 1, 1 } };
 
-        public int[,] I_Tetromino_90 = new int[4, 2]  {{ 1,0 },
-                                                       { 1,0 },
-                                                       { 1,0 },
-                                                       { 1,0 }};
+        public int[,] I_Tetromino_90 = new int[4, 1]  {{ 1 },
+                                                       { 1 },
+                                                       { 1 },
+                                                       { 1 }};
+        public int[,] I_Tetromino_180 = new int[1, 4] { { 1, 1, 1, 1 } };
+        public int[,] I_Tetromino_270 = new int[4, 1]  {{ 1 },
+                                                       { 1 },
+                                                       { 1 },
+                                                       { 1 }};
         public I_Tetromino()
         {
             TetrominoColor = Colors.Red;

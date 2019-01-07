@@ -21,9 +21,7 @@ namespace TetrisMVC.BusinessLayer
         private MainWindowController mainWindowController;
 
         private TetraminoMoving tetraminoMoving;
-        public Tetramino Tetramino { get; set; }
-
-
+        
         public int rotation = 0;
         private int rowCount = 0;
         private int columnCount = 0;
@@ -40,6 +38,7 @@ namespace TetrisMVC.BusinessLayer
         private int[,] currentTetromino = null;
         List<int> currentTetrominoRow = null;
         List<int> currentTetrominoColumn = null;
+        int colorNumber;
         Random shapeRandom;
         
 
@@ -59,7 +58,7 @@ namespace TetrisMVC.BusinessLayer
         public bool IsRotated { get; set; } = false;
         public int CurrentShapeNumber { get; set; }
 
-        Dictionary<int, test> dicTetramino = null;
+        public Dictionary<int, Tetramino> dicTetramino = null;
         #endregion
 
         #region METHOD
@@ -71,9 +70,9 @@ namespace TetrisMVC.BusinessLayer
             CurrentShapeNumber = shapeRandom.Next(1, 8);
             nextShapeNumber = shapeRandom.Next(1, 8);
             tetraminoMoving = new TetraminoMoving();
-            Tetramino = new Tetramino();
-            dicTetramino = new Dictionary<int, test>(); 
-
+            
+            dicTetramino = new Dictionary<int, Tetramino>();
+            colorNumber = mWC.MainWindow.myBoard.getColor();
             InitDictionaryTetramino();
         }
 
@@ -84,8 +83,8 @@ namespace TetrisMVC.BusinessLayer
             dicTetramino.Add(3, new T_Tetromino());
             dicTetramino.Add(4, new S_Tetromino());
             dicTetramino.Add(5, new Z_Tetromino());
-            dicTetramino.Add(6, new L_Tetromino());
-            dicTetramino.Add(7, new J_Tetromino());
+            dicTetramino.Add(6, new J_Tetromino());
+            dicTetramino.Add(7, new L_Tetromino());
         }
 
         public int getValueScore()
@@ -124,7 +123,7 @@ namespace TetrisMVC.BusinessLayer
                 rotation -= 90;
                 return;
             }
-            tetraminoMoving.shapeRotation(ref rotation, CurrentShapeNumber, ref currentTetromino, Tetramino);
+            tetraminoMoving.shapeRotation(ref rotation, ref currentTetromino, dicTetramino[CurrentShapeNumber]);
             IsRotated = true;
             addShape(CurrentShapeNumber, LeftPos, DownPos);
         }
@@ -363,19 +362,14 @@ namespace TetrisMVC.BusinessLayer
             if (!IsRotated)
             {
                 currentTetromino = null;
-                currentTetromino = Tetramino.getVariableByString(Tetramino.getArrayTetrominos()[shapeNumber].ToString());
-                test teType = dicTetramino[shapeNumber];
-                int[,] a = teType.getVariableByString(teType.getArrayTetrominos().ToString(), teType);
+                
+                currentTetromino = dicTetramino[shapeNumber].getVariableByString(dicTetramino[shapeNumber].getArrayTetrominos());
             }
             int firstDim = currentTetromino.GetLength(0);
             int secondDim = currentTetromino.GetLength(1);
             currentTetrominoWidth = secondDim;
             currentTetrominoHeigth = firstDim;
-            //if (currentTetromino == Tetramino.I_Tetromino_90)
-            //{
-            //    currentTetrominoWidth = 1;
-            //}
-            //else if (currentTetromino == Tetramino.I_Tetromino_0) { currentTetrominoHeigth = 1; }
+            
             for (int row = 0; row < firstDim; row++)
             {
                 for (int column = 0; column < secondDim; column++)
@@ -383,7 +377,8 @@ namespace TetrisMVC.BusinessLayer
                     int bit = currentTetromino[row, column];
                     if (bit == 1)
                     {
-                        square = Tetramino.getBasicSquare(handleColor(mainWindowController.MainWindow.myBoard.getColor(), shapeNumber));
+                        square = colorNumber != 0 ? dicTetramino[shapeNumber].getBasicSquare(handleColor(colorNumber))
+                            : dicTetramino[shapeNumber].getBasicSquare(dicTetramino[shapeNumber].TetrominoColor);
                         mainWindowController.MainWindow.myBoard.getMainGrid().Children.Add(square);
                         square.Name = "moving_" + Grid.GetRow(square) + "_" + Grid.GetColumn(square);
                         if (_down >= mainWindowController.MainWindow.myBoard.getMainGrid().RowDefinitions.Count - currentTetrominoHeigth)
@@ -409,24 +404,9 @@ namespace TetrisMVC.BusinessLayer
             }
         }
 
-        public Color handleColor(int color, int shapeNumber)
+        public Color handleColor(int colorNumber)
         {
-            if (color == 1)
-                return Colors.GreenYellow;
-            if (color == 2)
-                return Colors.Red;
-            if (color == 3)
-                return Colors.Gold;
-            if (color == 4)
-                return Colors.Violet;
-            if (color == 5)
-                return Colors.DeepSkyBlue;
-            if (color == 6)
-                return Colors.Cyan;
-            if (color == 7)
-                return Colors.LightSeaGreen;
-            return Tetramino.getShapecolor()[shapeNumber - 1];
-
+            return dicTetramino[colorNumber].TetrominoColor;
         }
 
         // Hàm tạo một khối tiếp theo
@@ -434,7 +414,7 @@ namespace TetrisMVC.BusinessLayer
         {
             mainWindowController.MainWindow.myBoard.getNextShapeCanvas().Children.Clear();
             int[,] nextShapeTetromino = null;
-            nextShapeTetromino = Tetramino.getVariableByString(Tetramino.getArrayTetrominos()[shapeNumber]);
+            nextShapeTetromino = dicTetramino[shapeNumber].getVariableByString(dicTetramino[shapeNumber].getArrayTetrominos());
             int firstDim = nextShapeTetromino.GetLength(0);
             int secondDim = nextShapeTetromino.GetLength(1);
             int x = 0;
@@ -447,7 +427,8 @@ namespace TetrisMVC.BusinessLayer
                     int bit = nextShapeTetromino[row, column];
                     if (bit == 1)
                     {
-                        square = Tetramino.getBasicSquare(handleColor(mainWindowController.MainWindow.myBoard.getColor(), shapeNumber));
+                        square = colorNumber != 0 ? dicTetramino[shapeNumber].getBasicSquare(handleColor(colorNumber))
+                            : dicTetramino[shapeNumber].getBasicSquare(handleColor(shapeNumber));
                         mainWindowController.MainWindow.myBoard.getNextShapeCanvas().Children.Add(square);
                         Canvas.SetLeft(square, x);
                         Canvas.SetTop(square, y);

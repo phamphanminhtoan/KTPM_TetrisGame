@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace TetrisMVC.DTO.Tetramino
 {
-    class T_Tetromino : test
+    class T_Tetromino : Tetramino
     {
         //---- Khối chữ T và các góc quay------------
         public int[,] T_Tetromino_0 = new int[2, 3] {{0,1,0},

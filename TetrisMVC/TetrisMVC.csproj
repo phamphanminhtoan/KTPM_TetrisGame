@@ -76,7 +76,7 @@
     <Compile Include="DTO\Tetramino\L_Tetromino.cs" />
     <Compile Include="DTO\Tetramino\O_Tetromino.cs" />
     <Compile Include="DTO\Tetramino\S_Tetromino.cs" />
-    <Compile Include="DTO\Tetramino\test.cs" />
+    <Compile Include="DTO\Tetramino\Tetramino.cs" />
     <Compile Include="DTO\Tetramino\T_Tetromino.cs" />
     <Compile Include="DTO\Tetramino\Z_Tetromino.cs" />
     <Compile Include="View\highScore.xaml.cs">
@@ -107,7 +107,7 @@
     <Compile Include="BusinessLayer\TetraminoMoving.cs" />
     <Compile Include="Controller\MainMenuController.cs" />
     <Compile Include="DTO\Board\Board.cs" />
-    <Compile Include="DTO\Tetramino\Tetramino.cs" />
+    <Compile Include="DTO\Tetramino\Tetramino_BK.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
